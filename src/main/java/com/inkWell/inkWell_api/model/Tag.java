@@ -20,8 +20,7 @@ public class Tag {
     public Tag() {
     }
 
-    public Tag(Integer id, Set<Post> posts, String string, String slug) {
-        this.id = id;
+    public Tag(Set<Post> posts, String string, String slug) {
         this.posts = posts;
         this.name = string;
         this.slug = slug;
