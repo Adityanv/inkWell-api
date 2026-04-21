@@ -1,29 +1,19 @@
-package com.inkWell.inkWell_api.model;
+package com.inkWell.inkWell_api.dto;
 
-import jakarta.persistence.*;
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "comments")
-public class Comment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CommentResponseDTO {
     private Integer id;
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post post;
+    private Integer postId;
     private String authorName;
     private String authorEmail;
     private String body;
     private LocalDateTime createdAt;
 
-    public Comment() {
-    }
-
-    public Comment(Post post, String authorName, String authorEmail, String body, LocalDateTime createdAt) {
-        this.post = post;
+    public CommentResponseDTO(Integer id, Integer postId, String authorName, String authorEmail, String body, LocalDateTime createdAt) {
+        this.id = id;
+        this.postId = postId;
         this.authorName = authorName;
         this.authorEmail = authorEmail;
         this.body = body;
@@ -36,6 +26,14 @@ public class Comment {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
     public String getAuthorName() {
@@ -68,13 +66,5 @@ public class Comment {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
     }
 }

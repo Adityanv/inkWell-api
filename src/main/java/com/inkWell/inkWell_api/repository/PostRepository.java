@@ -39,4 +39,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
             @Param("authorId") Integer authorId,
             Pageable pageable
     );
+
+    long countByStatus(PostStatus postStatus);
 }
